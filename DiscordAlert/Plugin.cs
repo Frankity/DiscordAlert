@@ -21,13 +21,14 @@ namespace DiscordAlert
     public class Plugin : IPlugin
     {
         public string Author => "Frankity";
-        public float Version => 1.4f;
+        public float Version => 1.5f;
         public string Name => "Discord Alert Plugin";
 
         public string id;
         public string token;
         public string joined;
         public string left;
+        public string botname;
 
         public async Task OnLoadAsync(IManager manager)
         {
@@ -38,6 +39,7 @@ namespace DiscordAlert
             token = ini.IniReadValue("config", "token");
             joined = ini.IniReadValue("config", "joined");
             left = ini.IniReadValue("config", "left");
+            botname = ini.IniReadValue("config", "botname");
         }
 
         public async Task OnUnloadAsync()
@@ -61,7 +63,7 @@ namespace DiscordAlert
 
                 try
                 {
-                    hookSender.Send(joined.Replace("player", p.Name).Replace("svname", s.Hostname), "SilentBot", null, false, null);
+                    hookSender.Send(joined.Replace("player", p.Name).Replace("svname", s.Hostname), botname, null, false, null);
                 }
                 catch (Exception e)
                 {
@@ -73,7 +75,7 @@ namespace DiscordAlert
                 Player p = E.Origin;
                 try
                 {
-                    hookSender.Send(left.Replace("player", p.Name).Replace("svname", s.Hostname), "SilentBot", null, false, null);
+                    hookSender.Send(left.Replace("player", p.Name).Replace("svname", s.Hostname), botname, null, false, null);
                 }
                 catch (Exception e)
                 {
