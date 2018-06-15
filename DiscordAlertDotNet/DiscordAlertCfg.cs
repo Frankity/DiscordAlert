@@ -20,6 +20,7 @@ namespace DiscordAlertDotNet
             HookToken = "YOUR TOKEN HERE";
             OnJoinedMessage = "**player** joined in to the **svname** server!";
             OnLeftMessage = "**player** left the **svname** server!";
+            BotName = "CHANGEME";
             return this;
         }
 
