@@ -46,6 +46,7 @@ namespace DiscordAlertDotNet
 
         public async Task<HttpResponseMessage> Send(string content, string username = null, string avatarUrl = null, bool isTTS = false, IEnumerable<Embed> embeds = null)
         {
+            // Encoding.GetEncoding(1251).GetString(Encoding.GetEncoding(1252).GetBytes(source));
             Content = content;
             Username = username;
             AvatarUrl = avatarUrl;
