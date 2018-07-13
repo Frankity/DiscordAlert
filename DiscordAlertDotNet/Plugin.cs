@@ -40,8 +40,7 @@ namespace DiscordAlertDotNet
             {
                 Player p = E.Origin;
 
-                if (p.Level >= Player.Permission.Trusted)
-                {
+                
                     try
                     {
                         await hookSender.Send(Config.Configuration().OnJoinedMessage.Replace("player", p.Name).Replace("svname", S.Hostname) + " - **" + S.GameName.ToString() + "**", Config.Configuration().BotName, null, false, null);
@@ -50,14 +49,13 @@ namespace DiscordAlertDotNet
                     {
                         Console.WriteLine(e.StackTrace);
                     }
-                }
+                
             }
 
             if(E.Type == GameEvent.EventType.Disconnect)
             {
                 Player p = E.Origin;
-                if (p.Level >= Player.Permission.Trusted)
-                {
+                
                     try
                     {
                         await hookSender.Send(Config.Configuration().OnLeftMessage.Replace("player", p.Name).Replace("svname", S.Hostname) + " - **" + S.GameName.ToString() + "**", Config.Configuration().BotName, null, false, null);
@@ -66,7 +64,7 @@ namespace DiscordAlertDotNet
                     {
                         Console.WriteLine(e.StackTrace);
                     }
-                }
+                
             }
 
             if (E.Type == GameEvent.EventType.Report)
