@@ -6,6 +6,10 @@
     <OutputType>Library</OutputType>
     <StartupObject />
     <UseNETCoreGenerator>true</UseNETCoreGenerator>
+    <Version>0.3</Version>
+    <Authors>Frankity</Authors>
+    <PackageProjectUrl>https://github.com/Frankity/DiscordAlert</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Frankity/DiscordAlert</RepositoryUrl>
 
   </PropertyGroup>
   <ItemGroup>

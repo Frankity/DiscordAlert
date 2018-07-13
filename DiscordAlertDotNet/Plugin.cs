@@ -16,7 +16,7 @@ namespace DiscordAlertDotNet
     {
         public string Name => "DiscordAlertDotnet";
 
-        public float Version => 0.1f;
+        public float Version => 0.3f;
 
         public string Author => "Frankity";
 
@@ -41,15 +41,15 @@ namespace DiscordAlertDotNet
                 Player p = E.Origin;
 
                 if (p.Level >= Player.Permission.Trusted)
-                    await E.Owner.Broadcast(Announce($"Player ^1{p.Name} ^7announced in ^1D^7iscord!", p));
-
-                try
                 {
-                    await hookSender.Send(Config.Configuration().OnJoinedMessage.Replace("player", p.Name).Replace("svname", S.Hostname), Config.Configuration().BotName, null, false, null);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.StackTrace);
+                    try
+                    {
+                        await hookSender.Send(Config.Configuration().OnJoinedMessage.Replace("player", p.Name).Replace("svname", S.Hostname) + " - **" + S.GameName.ToString() + "**", Config.Configuration().BotName, null, false, null);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
                 }
             }
 
@@ -57,15 +57,15 @@ namespace DiscordAlertDotNet
             {
                 Player p = E.Origin;
                 if (p.Level >= Player.Permission.Trusted)
-                    await E.Owner.Broadcast(Announce($"Player ^1{p.Name} ^7announced in ^1D^7iscord!", p));
-
-                try
                 {
-                    await hookSender.Send(Config.Configuration().OnLeftMessage.Replace("player", p.Name).Replace("svname", S.Hostname), Config.Configuration().BotName, null, false, null);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.StackTrace);
+                    try
+                    {
+                        await hookSender.Send(Config.Configuration().OnLeftMessage.Replace("player", p.Name).Replace("svname", S.Hostname) + " - **" + S.GameName.ToString() + "**", Config.Configuration().BotName, null, false, null);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
                 }
             }
 
