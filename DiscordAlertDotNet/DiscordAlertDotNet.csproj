@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
     <UseNETCoreGenerator>true</UseNETCoreGenerator>
-    <Version>0.3</Version>
+    <Version>0.4</Version>
     <Authors>Frankity</Authors>
     <PackageProjectUrl>https://github.com/Frankity/DiscordAlert</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Frankity/DiscordAlert</RepositoryUrl>
@@ -17,11 +17,11 @@
       <HintPath>..\..\iw4madmin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SharedLibraryCore">
-      <HintPath>..\..\iw4madmin\SharedLibraryCore.dll</HintPath>
+      <HintPath>..\..\2.3p\Lib\SharedLibraryCore.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Microsoft.NETCore.App" Version="2.0.7" />
+    <PackageReference Update="Microsoft.NETCore.App" Version="2.1.0" />
   </ItemGroup>
 
 </Project>

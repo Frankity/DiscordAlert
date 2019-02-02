@@ -38,38 +38,33 @@ namespace DiscordAlertDotNet
 
             if (E.Type == GameEvent.EventType.Connect)
             {
-                Player p = E.Origin;
+                EFClient p = E.Origin;
 
-                
-                    try
-                    {
-                        await hookSender.Send(Config.Configuration().OnJoinedMessage.Replace("player", p.Name).Replace("svname", S.Hostname) + " - **" + S.GameName.ToString() + "**", Config.Configuration().BotName, null, false, null);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.StackTrace);
-                    }
-                
+
+                try
+                {
+                    await hookSender.Send(Config.Configuration().OnJoinedMessage.Replace("player", p.Name).Replace("svname", S.Hostname) + " - **" + S.GameName.ToString() + "**", Config.Configuration().BotName, null, false, null);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                }
+
             }
 
-            if(E.Type == GameEvent.EventType.Disconnect)
+            if (E.Type == GameEvent.EventType.Disconnect)
             {
-                Player p = E.Origin;
-                
-                    try
-                    {
-                        await hookSender.Send(Config.Configuration().OnLeftMessage.Replace("player", p.Name).Replace("svname", S.Hostname) + " - **" + S.GameName.ToString() + "**", Config.Configuration().BotName, null, false, null);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.StackTrace);
-                    }
-                
-            }
+                EFClient p = E.Origin;
 
-            if (E.Type == GameEvent.EventType.Report)
-            {
-                await hookSender.Send($"**{E.Origin.Name}** has reported **{E.Target.Name}** for: {E.Data.Trim()}",E.Target.Name, E.Origin.Name);
+                try
+                {
+                    await hookSender.Send(Config.Configuration().OnLeftMessage.Replace("player", p.Name).Replace("svname", S.Hostname) + " - **" + S.GameName.ToString() + "**", Config.Configuration().BotName, null, false, null);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                }
+
             }
 
         }
@@ -78,19 +73,5 @@ namespace DiscordAlertDotNet
 
         public Task OnUnloadAsync() => Task.CompletedTask;
 
-        private string Announce(string msg, Player joining)
-        {
-            msg = msg.Replace("{{ClientName}}", joining.Name);
-            msg = msg.Replace("{{ClientLevel}}", Utilities.ConvertLevelToColor(joining.Level));
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-            }
-            return msg;
-        }
     }
 }
